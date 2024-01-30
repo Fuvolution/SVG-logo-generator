@@ -42,24 +42,24 @@ const questions = [
 
 // When the user answers all the prompts, this function creates a SVG file 
 // containing the SVG logo in a file named "logo.svg"
-function writeToFile(fileName, data){
-    var content = generateLogo(data);
-    fs.writeFile(fileName, content, function(error){
-        if(error){
-            return console.log(error);
-        }
-        console.log('Generated logo.svg');
+function writeToFile(fileName, content) {
+    fs.writeFile(fileName, content, function (error) {
+      if (error) {
+        return console.log(error);
+      }
+      console.log('Generated logo.svg');
     });
-}
+  }
+  
 
 // This function initialize app
-function init(){
+function init() {
     inquirer.prompt(questions).then(function (data) {
-        const fileName = 'logo.svg';
-        const content = generateLogo(data);
-        writeToFile(fileName, content);
+      const fileName = 'logo.svg';
+      const logoContent = generateLogo(data);
+      writeToFile(fileName, logoContent);
     });
-}
+  }
 
 // This function call calls the init function to initialize app
 init();
